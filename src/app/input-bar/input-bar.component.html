@@ -1,0 +1,6 @@
+<input [(ngModel)]="id">
+<input readonly [value]="id">
+<select [(ngModel)]="selectedPokemonId">
+    <option *ngFor="let pokemon of pokeList" [value]="pokemon.id">{{pokemon.name}}</option>
+</select>
+<p>{{ getPokemonName() }}</p>
