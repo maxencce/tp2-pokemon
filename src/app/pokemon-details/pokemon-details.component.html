@@ -1,0 +1,35 @@
+<mat-card *ngIf="pokemonDetails">
+    <mat-card-title>{{ pokemonDetails.name[0].toUpperCase() + pokemonDetails.name.slice(1) }}</mat-card-title>
+    <mat-card-content>
+
+        <div id="sprites-container">
+            <img *ngIf="pokemonDetails.sprites.front_default" [src]="pokemonDetails.sprites.front_default"
+                alt="Front Default">
+            <img *ngIf="pokemonDetails.sprites.front_shiny" [src]="pokemonDetails.sprites.front_shiny"
+                alt="Front Shiny">
+        </div>
+
+        <table class="mat-elevation-z8">
+            <tr>
+                <th>Name</th>
+                <td>{{ pokemonDetails.name }}</td>
+            </tr>
+            <tr>
+                <th>Height</th>
+                <td>{{ pokemonDetails.height }}</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ pokemonDetails.weight }}</td>
+            </tr>
+            <tr>
+                <th>Types</th>
+                <td>
+                    <ul>
+                        <li *ngFor="let type of pokemonDetails.types">{{ type }}</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </mat-card-content>
+</mat-card>

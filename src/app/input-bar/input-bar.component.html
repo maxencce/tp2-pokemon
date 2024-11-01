@@ -1,6 +1,18 @@
-<input [(ngModel)]="id">
-<input readonly [value]="id">
-<select [(ngModel)]="selectedPokemonId">
-    <option *ngFor="let pokemon of pokeList" [value]="pokemon.id">{{pokemon.name}}</option>
-</select>
-<p>{{ getPokemonName() }}</p>
+<mat-form-field appearance="fill">
+    <mat-label>Search a Pokemon</mat-label>
+    <input matInput [(ngModel)]="pokeSearched">
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Copy</mat-label>
+    <input matInput readonly [value]="pokeSearched">
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Select a Pokemon</mat-label>
+    <mat-select [(ngModel)]="selectedPokemonId" (selectionChange)="changeSelectedId()">
+        <mat-option *ngFor="let pokemon of pokeList | filterPokemonPipe: pokeSearched" [value]="pokemon.id">
+            {{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
